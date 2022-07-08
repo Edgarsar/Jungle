@@ -138,7 +138,7 @@ cat2.products.create!({
   As a defense mechanism the Sweet Hop relies mostly on its surroundings to survive.
   They rely on self pollination to reproduce. Once pollinated, they grow fairly large, delicious nuts.",
   image: open_asset('plante_7.jpg'),
-  quantity: 40,
+  quantity: 0,
   price: 64.49
 })
 
