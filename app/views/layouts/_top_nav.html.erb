@@ -67,6 +67,21 @@
         <li class="nav-item end-0">
           <%= link_to 'About Us', [:about, :index], class: "nav-link " %>
         </li>
+        
+          <% if current_user %>
+          <li class="nav-item end-0">
+          <%= link_to "Logout", logout_path, class: "nav-link " %>
+        </li>
+        <% else %>
+        <li class="nav-item end-0">
+         <%= link_to 'Login', '/login', class: "nav-link " %> 
+        </li>
+       <% end %>
+        
+        <li class="nav-item end-0">
+           <%= link_to 'Sign Up', '/signup', class: "nav-link " %>
+        </li>
+        
       </ul>
     </div>
   </div>
