@@ -1,0 +1,29 @@
+
+<section class="user-signin">
+
+  <header class="page-header">
+    <h1>Sign In</h1>
+  </header>
+
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-1">
+      <%= form_with url: login_path do |f| %>
+
+        
+        <div class="form-group">
+          <%= f.label :Email %><br/>
+          <%= f.email_field :email, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :Password %><br/>
+          <%= f.password_field :password, class: "form-control" %>
+
+        <%= f.submit 'Sign In', class: 'btn btn-primary' %>
+      <% end %>
+      
+      <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+    </div>
+  </div>
+
+</section>
