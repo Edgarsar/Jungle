@@ -39,10 +39,15 @@
         <div class="form-group">
           <%= f.label :Password %><br/>
           <%= f.password_field :password, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :'password_confirmation', 'Confirm Password' %><br/>
+          <%= f.password_field :password_confirmation, class: "form-control" %>
+        </div>
 
         <%= f.submit 'Sign Up', class: 'btn btn-primary' %>
       <% end %>
-    </div>
   </div>
 
 </section>
