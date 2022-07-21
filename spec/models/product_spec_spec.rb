@@ -9,7 +9,7 @@ RSpec.describe Product, type: :model do
     it "product saves successfully with all four fields set" do
      @product = Product.new(
         name: "Lily",
-        price_cents:20.99,
+        price_cents: 20.99,
         quantity: 23,
         category: @category
       )
@@ -22,7 +22,7 @@ RSpec.describe Product, type: :model do
     it "product should have a name " do
       @product = Product.new(
         name: nil,
-        price_cents:20.99,
+        price_cents: 20.99,
         quantity: 23,
         category: @category
       )
