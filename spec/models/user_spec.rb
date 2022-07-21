@@ -124,7 +124,6 @@ RSpec.describe User, type: :model do
       password_confirmation: "123" 
   )
   @user.save
-  p @user.errors.full_messages
     expect(@user).to_not be_valid
     expect(@user.errors.full_messages).to include "Password is too short (minimum is 5 characters)"
   
@@ -132,7 +131,44 @@ RSpec.describe User, type: :model do
   end
 
   describe '.authenticate_with_credentials' do
-    
+    before do
+      @user = User.new(
+        first_name: "Peter" ,
+        last_name: "Jackson",
+        email: "peterjackson@gmail.com",
+        password: "petter123",
+        password_confirmation: "petter123" 
+    )
+    @user.save!
+  end
+
+    it 'should authenticate if password and email are valid' do
+      valid_user = User.authenticate_with_credentials(@user.email,@user.password)
+
+    expect(valid_user).to eq @user
     
   end
+
+  it "doesn't authenticate when email is incorrect" do
+    
+    invalid_user = User.authenticate_with_credentials("other@gmail.com", @user.password)
+    expect(invalid_user).to eq nil
+  end
+
+  it "doesn't authenticate when password is incorrect" do
+    invalid_pass = User.authenticate_with_credentials(@user.email, "wrongpass")
+    expect(invalid_pass).to eq nil
+  end
+
+  it "authenticates when email is correct but contains whitespace around it" do
+    valid_user = User.authenticate_with_credentials(" #{@user.email} ", @user.password)
+    expect(valid_user).to eq @user
+  end
+
+  it "authenticates when email is correct but in the wrong case" do
+    valid_user = User.authenticate_with_credentials("peTeRjackSon@GmaiL.cOm", @user.password)
+    expect(valid_user).to eq @user
+  end
+
+end
 end
