@@ -4,9 +4,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:email])
-    # finds existing user, checks to see if user can be authenticated
-    if user && user.authenticate(params[:password])
+    
+    #  checks to see if user can be authenticated
+    if user = User.authenticate_with_credentials(params[:email], params[:password])
     # sets up user.id sessions
       session[:user_id] = user.id
       redirect_to root_path, notice: 'Successfully logged in!'
